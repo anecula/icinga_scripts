@@ -64,6 +64,17 @@ EOFZONECONF
 
 sed -i -e "s#NodeNme#\"$(hostname)\"#g;s#ZoneName#\"$(hostname)\"#g" /etc/icinga2/zones.conf
 
+#( bellow is custom -> you do not need to remove apt I dit it because is a custom project with specific needs)
+
+#Remove apt services-icinga2  
+cd /etc/icinga2/conf.d
+rm apt.conf
+
+#http port is 80 default I need it on 8080
+sed -i '/vars.http_vhosts/ a \    http_port = "8080"' hosts.conf
+
+
+#done customization
 
 
 service icinga2 restart
