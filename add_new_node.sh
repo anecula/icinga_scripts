@@ -72,6 +72,7 @@ rm apt.conf
 
 #http port is 80 default I need it on 8080
 sed -i '/vars.http_vhosts/ a \    http_port = "8080"' hosts.conf
+awk 'NR!~/^(36)$/' hosts.conf
 
 
 #done customization
